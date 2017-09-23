@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<title>Edit {{ request.user.get_full_name }}'s profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+.w3-sidebar {width: 120px;background: #222;}
+#main {margin-left: 120px}
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  {% if us.photo %}
+  <img src="{{us.photo.url}}" style="width:100%">
+  {% else %}
+  <img src="https://yt3.ggpht.com/-tpPJuK2c8QA/AAAAAAAAAAI/AAAAAAAAAAA/b_tq0T0lyFI/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" style="width:100%">
+  {% endif %}
+  <a href="/accounts/profile/" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="/accounts/profile/#attendance" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ATTENDANCE</p>
+  </a>
+
+  <a href="/edit_profile" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-pencil-square-o w3-xxlarge" aria-hidden="true"></i>
+    <p>EDIT PROFILE</p>
+  </a>
+  <a href="/accounts/logout/" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-sign-out w3-xxlarge"></i>
+    <p>LOGOUT</p>
+  </a>
+
+</nav>
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#attendance" class="w3-bar-item w3-button" style="width:25% !important">ATTENDANCE</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+    <a href="/edit_profile" class="w3-bar-item w3-button" style="width:25% !important">EDIT PROFILE</a>
+  </div>
+</div>
+
+<div class="w3-padding-large" id="main">
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <form action="" method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           <table>
+           {{ form }}
+           </table>
+           <input type="submit" value="Submit" />
+       </form>
+  </header>
