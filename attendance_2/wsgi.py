@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 """
 
 import os
-fromdjango.core.wsgiimportget_wsgi_applicationfromdj_staticimportCling application = Cling(get_wsgi_application())
+# from django.core.wsgiimportget_wsgi_applicationfromdj_staticimportCling application = Cling(get_wsgi_application())
 
 from django.core.wsgi import get_wsgi_application
 
